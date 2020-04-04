@@ -1,11 +1,13 @@
 package com.dateme;
 
 
-	import java.io.IOException;
-	import java.io.PrintWriter;
-
-	import javax.servlet.ServletException;
+	import java.io.*;
+	import javax.servlet.*;
 	import javax.servlet.annotation.WebServlet;
+	import javax.servlet.http.*;
+	import java.sql.*;
+	import oracle.jdbc.driver.*;
+	import javax.servlet.ServletException;
 	import javax.servlet.http.HttpServlet;
 	import javax.servlet.http.HttpServletRequest;
 	import javax.servlet.http.HttpServletResponse;
@@ -16,12 +18,33 @@ package com.dateme;
 	@WebServlet("/LoginServlet")
 	public class LoginServlet extends HttpServlet {
 	 private static final long serialVersionUID = 1L;
-	       
+     Connection con = null;
+     Statement stmt = null;
+     ResultSet rs = null;
+     String JDBCUrl = "jdbc:oracle:thin:@ee417.c7clh2c6565n.eu-west-1.rds.amazonaws.com:1521:EE417";
+     String username = "ee_user";
+     String password = "ee_pass";
+     
 	    public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 	     res.setContentType("text/html");
 	     PrintWriter out = res.getWriter();
 	     
-	     User user = validateUser(req.getParameter("usernamefield"), req.getParameter("passwordfield"));
+	     try {
+	    	 System.out.println("Fecthing User info from database");
+	    	 Class.forName("oracle.jdbc.driver.OracleDriver");
+	    	 con = DriverManager.getConnection(JDBCUrl, username, password);
+	     }
+	     catch(Exception e){
+	    	 e.printStackTrace();
+	     }
+	     
+	     User user=null;
+		try {
+			user = validateUser(req.getParameter("usernamefield"), req.getParameter("passwordfield"));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	     if (user!=null) {   // login succeeded
 	     out.println("Welcome " + user.getFirstname() + " " + user.getSurname() + ".  You are now logged in!");
 	     out.println("<br/><br/>Please click here to go to the <a href=\"AccountHome\">AccountHome page</a>");
@@ -40,20 +63,34 @@ package com.dateme;
 	    /*
 	     * This method will dummy the login process and return null if unsuccessful or a User object if successful
 	     */
-	    private User validateUser(String username,String password) {
-	     // Let us first make a Vector of dummy users that are allowable... these would normally be taken from a database 
-	     // or some other storage of all of our users
-	     Vector<User> allUsers = new Vector<User>();
-	    allUsers.add(new User("doej","John", "Doe", "doej@dm.com","pass","12th December 1991", "Male"));
-	     //allUsers.add(new User("Mary", "Smith", "smithm", "mypass"));
-	     
-	     // Now do the comparison
-	     Enumeration<User> e = allUsers.elements();
-	     while (e.hasMoreElements()) {
-	     User user = (User) e.nextElement();
-	     if ((user.getPassword().equals(password))&&(user.getUsername().equals(username))) 
-	     return user;
-	     }
-	     return null; 
+	    private User validateUser(String username,String password) throws SQLException{
+	    	
+	    	String query = "SELECT * FROM DateMe_User WHERE userid='" + username + "'";
+            Statement statement = con.createStatement();
+            ResultSet result = statement.executeQuery(query);
+            User user=new User();
+            if (result.next() == false) {
+                System.out.println("Result set is empty! User id does not exist");
+               // return "empty";
+            } else {
+                do {
+                    if (result.getString("password").equals(password)) {
+                  
+                    
+                        user.setFirstname(result.getString("FIRST_NAME"));
+                        user.setUsername(result.getString("USERNAME"));
+                        user.setSurname(result.getString("LAST_NAME"));
+                        user.setEmail(result.getString("E_MAIL"));
+                        user.setPassword(result.getString("PASSWORD"));
+                        user.setDob(result.getString("DOB"));
+                        user.setSex(result.getString("SEX"));
+                      
+                    } else {
+                    	System.out.println("loda lehsun");
+                    }
+                } while (result.next());
+            }
+	    	
+	    	return user; 
 	    }
 	}

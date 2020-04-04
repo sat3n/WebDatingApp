@@ -12,6 +12,7 @@ import oracle.jdbc.driver.*;
 /**
  * Servlet implementation class RegisterAcnt
  */
+@SuppressWarnings("unused")
 @WebServlet("/RegisterAcnt")
 public class RegisterAcnt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -27,7 +28,7 @@ public class RegisterAcnt extends HttpServlet {
 	        	   response.setContentType("text/html");
 	        	   PrintWriter out = response.getWriter();
 	        	   out.println("<html><head><title>Servelet for DB</title></head>");
-	        	   out.println("<body><h1>DateMe_User tabel vals</h1>");
+	        	   out.println("<body><h1>DateMe_User tabel Values Updated</h1><br><p>The updated User tabel is : </p></body>");
 	        	   String Userid = request.getParameter("UserID");
 	        	   String Fname = request.getParameter("Fname");
 	        	   String Lname = request.getParameter("Lname");
@@ -56,7 +57,7 @@ public class RegisterAcnt extends HttpServlet {
 		      rs = stmt.executeQuery("SELECT * FROM DateMe_User");
 
 		     while (rs.next())
-	                System.out.println("<br>Name=" + rs.getString("FIRST_NAME") + rs.getString("LAST_NAME"));
+	                out.printf("/n Name=" + rs.getString("FIRST_NAME"), rs.getString("LAST_NAME"));
 		 }
 	         catch (SQLException e) {
 		     System.out.println("\nAn error has occurred during the Statement/ResultSet phase.  Please check the syntax and study the Exception details!");
