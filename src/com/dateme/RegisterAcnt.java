@@ -56,7 +56,7 @@ public class RegisterAcnt extends HttpServlet {
 		      rs = stmt.executeQuery("SELECT * FROM DateMe_User");
 
 		     while (rs.next())
-	                System.out.println("\nName=" + rs.getString("Fname") + rs.getString("Lname"));
+	                System.out.println("<br>Name=" + rs.getString("FIRST_NAME") + rs.getString("LAST_NAME"));
 		 }
 	         catch (SQLException e) {
 		     System.out.println("\nAn error has occurred during the Statement/ResultSet phase.  Please check the syntax and study the Exception details!");
