@@ -8,8 +8,18 @@ public class User {
 	 private String PASSWORD;
 	 private String DOB;
 	 private String SEX;
-	 
-	 public String getUsername() {
+	 public User(String USERNAME, String FIRST_NAME, String LAST_NAME,
+			 String E_MAIL,String PASSWORD, String DOB, String SEX) {
+			 super();
+			 this.USERNAME = USERNAME;
+			 this.FIRST_NAME = getFirstname();
+			 this.LAST_NAME = getSurname();
+			 this.E_MAIL = getEmail();
+			 this.PASSWORD = PASSWORD;
+			 this.DOB = DOB;
+			 this.SEX = SEX;
+			 }
+	public String getUsername() {
 		 return USERNAME;
 		 }
 		 public void setUsername(String username) {

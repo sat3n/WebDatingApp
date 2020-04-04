@@ -26,11 +26,20 @@ public class RegisterAcnt extends HttpServlet {
 	         String username = "ee_user";
 	         String password = "ee_pass";
 	         
-	         public void doPost(HttpServletRequest req, HttpServletResponse res)
+	         public void doPost(HttpServletRequest request, HttpServletResponse response)
 	        	     throws ServletException, IOException {
-	        	   res.setContentType("text/html");
-	        	   PrintWriter out = res.getWriter();
-	        	   String uname = req.getParameter("username");
+	        	   response.setContentType("text/html");
+	        	   PrintWriter out = response.getWriter();
+	        	   out.println("<html><head><title>Servelet for DB</title></head>");
+	        	   out.println("<body><h1>DateMe_User tabel vals</h1>");
+	        	   String Userid = request.getParameter("UserID");
+	        	   String Fname = request.getParameter("Fname");
+	        	   String Lname = request.getParameter("Lname");
+	        	   String Email = request.getParameter("Email");
+	        	   String Pwd = request.getParameter("Pwd");
+	        	   String Dob = request.getParameter("Dob");
+	        	   String Sex = request.getParameter("sex");
+	        	   
 	    	     
 	    	     }
 	         

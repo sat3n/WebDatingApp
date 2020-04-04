@@ -50,7 +50,7 @@ body{
 }
 .submit1{
     left:1030px;
-    top:26px;
+    top:32px;
     background:grey;
     color:white;
     position:relative;
@@ -59,7 +59,17 @@ body{
     width:50px;
     cursor:pointer;
 
-
+}
+.submit2{
+    left:1050px;
+    top:32px;
+    background:grey;
+    color:white;
+    position:relative;
+    z-index:20;
+    height:20px;
+    width:50px;
+    cursor:pointer;
 
 }
 .date-body{

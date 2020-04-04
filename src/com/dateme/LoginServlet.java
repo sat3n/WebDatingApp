@@ -44,8 +44,8 @@ package com.dateme;
 	     // Let us first make a Vector of dummy users that are allowable... these would normally be taken from a database 
 	     // or some other storage of all of our users
 	     Vector<User> allUsers = new Vector<User>();
-	     allUsers.add(new User("John", "Doe", "doej", "somepass"));
-	     allUsers.add(new User("Mary", "Smith", "smithm", "mypass"));
+	    allUsers.add(new User("doej","John", "Doe", "doej@dm.com","pass","12th December 1991", "Male"));
+	     //allUsers.add(new User("Mary", "Smith", "smithm", "mypass"));
 	     
 	     // Now do the comparison
 	     Enumeration<User> e = allUsers.elements();

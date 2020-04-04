@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,16 +21,15 @@
     <form method="POST" action="RegisterAcnt" 
     name="myform">
 		<div id="form3" class="date-body">
-        <input placeholder="First Name" type="text" id="namebox" name="name1" />
-        <input placeholder="Last Name" type="text" id="namebox"  /> <br>
-        <input placeholder="Emai" type="text" id="mailbox" /><br>
-        <input placeholder="Re-enter email" type="text" id="mailbox"  /><br>
-        <input placeholder="Password" type="password" id="mailbox"  /><br>
-        <input type="date" id="namebox"  /><br><br>
+		<input placeholder="Username" type="text" id="namebox" name="UserID" /><br>
+        <input placeholder="First Name" type="text" id="namebox" name="Fname" />
+        <input placeholder="Last Name" type="text" id="namebox"  name="Lname"/> <br>
+        
+        <input placeholder="Email" type="text" id="mailbox"  name="Email"/><br>
+        <input placeholder="Password" type="password" id="mailbox" name="Pwd" /><br>
+        <input type="date" id="namebox"  name="Dob"/><br><br>
         <input type="radio" id="r-b" name="sex" value="male" />Male
         <input type="radio" id="r-b" name="sex" value="female" />Female<br><br>
-        <p id="intro4">By clicking Create an account, you agree to our Terms and that
-            you have read our Data Policy, including our Cookie Use.</p>
         <input type="submit" class="button2" value="Create an account" />
         <br>
         </form> 
