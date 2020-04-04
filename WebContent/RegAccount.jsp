@@ -27,7 +27,7 @@
         
         <input placeholder="Email" type="text" id="mailbox"  name="Email"/><br>
         <input placeholder="Password" type="password" id="mailbox" name="Pwd" /><br>
-        <input type="date" id="namebox"  name="Dob"/><br><br>
+        <input placeholder="Enter Date of Birth" type="text" id="namebox"  name="Dob"/><br><br>
         <input type="radio" id="r-b" name="sex" value="male" />Male
         <input type="radio" id="r-b" name="sex" value="female" />Female<br><br>
         <input type="submit" class="button2" value="Create an account" />

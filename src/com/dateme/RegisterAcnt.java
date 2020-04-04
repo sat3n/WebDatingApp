@@ -1,24 +1,20 @@
 package com.dateme;
 
-import java.sql.*;
-import oracle.jdbc.driver.*;
+
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+import java.sql.*;
+import oracle.jdbc.driver.*;
+
 
 /**
  * Servlet implementation class RegisterAcnt
  */
 @WebServlet("/RegisterAcnt")
 public class RegisterAcnt extends HttpServlet {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-
-	public static void main(String[] args)
-	    {
 	         Connection con = null;
 	         Statement stmt = null;
 	         ResultSet rs = null;
@@ -40,9 +36,7 @@ public class RegisterAcnt extends HttpServlet {
 	        	   String Dob = request.getParameter("Dob");
 	        	   String Sex = request.getParameter("sex");
 	        	   
-	    	     
-	    	     }
-	         
+	        //inserting the values into the database 
 	         try {
 	             System.out.println("\nConnecting to the SSD Database......");
 	             Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -58,11 +52,11 @@ public class RegisterAcnt extends HttpServlet {
 	 	 try {
 		     System.out.println("\nConnection Successful..... creating statement....");
 	      	     stmt = con.createStatement();
-	      	     rs = stmt.executeQuery("INSERT INTO DateMe_User('"+USERNAME+"','"+FIRST_NAME+"', '"+LAST_NAME+"','"+E_MAIL+"','"+PASSWORD+"', '"+DOB+"', '"+SEX+"')");
+	      	     rs = stmt.executeQuery("INSERT INTO DateMe_User VALUES('"+Userid+"','"+Fname+"', '"+Lname+"','"+Email+"','"+Pwd+"', '"+Dob+"', '"+Sex+"')");
 		      rs = stmt.executeQuery("SELECT * FROM DateMe_User");
 
 		     while (rs.next())
-	                System.out.println("\nName=" + rs.getString("FIRSTNAME") + " " + rs.getString("SURNAME"));
+	                System.out.println("\nName=" + rs.getString("Fname") + rs.getString("Lname"));
 		 }
 	         catch (SQLException e) {
 		     System.out.println("\nAn error has occurred during the Statement/ResultSet phase.  Please check the syntax and study the Exception details!");
