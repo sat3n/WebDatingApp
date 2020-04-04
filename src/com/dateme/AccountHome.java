@@ -24,8 +24,9 @@ public class AccountHome extends HttpServlet {
      if (user==null) {   // not logged in or timed out
      res.sendRedirect("login.html");
      } else {   // logged in and active session
-     out.println("This is your secure account page!");
-     out.println("If you are seeing this, you logged in!");
+    	 res.sendRedirect("home.jsp");
+     //out.println(<a href=\"AccountHome\">AccountHome page</a>);
+     //out.println("If you are seeing this, you logged in!");
      }
      out.close();
  }
