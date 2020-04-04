@@ -2,19 +2,10 @@ package com.dateme;
 
 import java.sql.*;
 import oracle.jdbc.driver.*;
-
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import javax.servlet.ServletException;
+import java.io.*;
+import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 
 /**
  * Servlet implementation class RegisterAcnt
@@ -35,6 +26,14 @@ public class RegisterAcnt extends HttpServlet {
 	         String username = "ee_user";
 	         String password = "ee_pass";
 	         
+	         public void doPost(HttpServletRequest req, HttpServletResponse res)
+	        	     throws ServletException, IOException {
+	        	   res.setContentType("text/html");
+	        	   PrintWriter out = res.getWriter();
+	        	   String uname = req.getParameter("username");
+	    	     
+	    	     }
+	         
 	         try {
 	             System.out.println("\nConnecting to the SSD Database......");
 	             Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -50,7 +49,8 @@ public class RegisterAcnt extends HttpServlet {
 	 	 try {
 		     System.out.println("\nConnection Successful..... creating statement....");
 	      	     stmt = con.createStatement();
-		     rs = stmt.executeQuery("SELECT * FROM EE_ADMIN.CUSTOMERS");
+	      	     rs = stmt.executeQuery("INSERT INTO DateMe_User('"+USERNAME+"','"+FIRST_NAME+"', '"+LAST_NAME+"','"+E_MAIL+"','"+PASSWORD+"', '"+DOB+"', '"+SEX+"')");
+		      rs = stmt.executeQuery("SELECT * FROM DateMe_User");
 
 		     while (rs.next())
 	                System.out.println("\nName=" + rs.getString("FIRSTNAME") + " " + rs.getString("SURNAME"));

@@ -1,41 +1,54 @@
 package com.dateme;
 
 public class User {
-	 private String firstname;
-	 private String surname;
-	 private String username;
-	 private String password;
+	 private String USERNAME;
+	 private String FIRST_NAME;
+	 private String LAST_NAME;
+	 private String E_MAIL;
+	 private String PASSWORD;
+	 private String DOB;
+	 private String SEX;
 	 
-	 public User(String firstname, String surname, String username,
-	 String password) {
-	 super();
-	 this.firstname = firstname;
-	 this.surname = surname;
-	 this.username = username;
-	 this.password = password;
-	 }
+	 public String getUsername() {
+		 return USERNAME;
+		 }
+		 public void setUsername(String username) {
+		 this.USERNAME = username;
+		 }
 	 public String getFirstname() {
-	 return firstname;
+	 return FIRST_NAME;
 	 }
 	 public void setFirstname(String firstname) {
-	 this.firstname = firstname;
+	 this.FIRST_NAME = firstname;
 	 }
 	 public String getSurname() {
-	 return surname;
+	 return LAST_NAME;
 	 }
 	 public void setSurname(String surname) {
-	 this.surname = surname;
+	 this.LAST_NAME = surname;
 	 }
-	 public String getUsername() {
-	 return username;
+	 public String getEmail() {
+	 return E_MAIL;
 	 }
-	 public void setUsername(String username) {
-	 this.username = username;
+	 public void setEmail(String email) {
+	 this.E_MAIL = email;
 	 }
 	 public String getPassword() {
-	 return password;
+	 return PASSWORD;
 	 }
 	 public void setPassword(String password) {
-	 this.password = password;
+	 this.PASSWORD = password;
+	 }
+	 public String getDob() {
+	 return DOB;
+	 }
+	 public void setDob(String dob) {
+	 this.DOB = dob;
+	 }
+	 public String getSex() {
+	 return SEX;
+	 }
+	 public void setSex(String sex) {
+	 this.SEX = sex;
 	 }
 	}
