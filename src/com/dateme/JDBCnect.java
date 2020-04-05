@@ -3,6 +3,7 @@ package com.dateme;
 import java.sql.*;
 import oracle.jdbc.driver.*;
 
+@SuppressWarnings("unused")
 public class JDBCnect {
 
 	public static void main(String[] args)

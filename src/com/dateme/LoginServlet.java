@@ -8,13 +8,8 @@ package com.dateme;
 	import java.sql.*;
 	import oracle.jdbc.driver.*;
 	import javax.servlet.ServletException;
-	import javax.servlet.http.HttpServlet;
-	import javax.servlet.http.HttpServletRequest;
-	import javax.servlet.http.HttpServletResponse;
-	import javax.servlet.http.HttpSession;
 
-	import java.util.*;
-
+	@SuppressWarnings("unused")
 	@WebServlet("/LoginServlet")
 	public class LoginServlet extends HttpServlet {
 	 private static final long serialVersionUID = 1L;
@@ -65,26 +60,23 @@ package com.dateme;
 	     */
 	    private User validateUser(String username,String password) throws SQLException{
 	    	
-	    	String query = "SELECT * FROM DateMe_User WHERE userid='" + username + "'";
+	    	String query = "SELECT * FROM DateMe_User WHERE USERNAME='" + username + "'";
             Statement statement = con.createStatement();
             ResultSet result = statement.executeQuery(query);
             User user=new User();
             if (result.next() == false) {
-                System.out.println("Result set is empty! User id does not exist");
-               // return "empty";
+              /*user.setFirstname(result.getString("FIRST_NAME"));
+                user.setUsername(result.getString("USERNAME"));
+                user.setSurname(result.getString("LAST_NAME"));
+                user.setEmail(result.getString("E_MAIL"));
+                user.setPassword(result.getString("PASSWORD"));
+                user.setDob(result.getString("DOB"));
+                user.setSex(result.getString("SEX"));
+                System.out.println("Result set is empty! User id does not exist");*/
             } else {
                 do {
                     if (result.getString("password").equals(password)) {
-                  
-                    
-                        user.setFirstname(result.getString("FIRST_NAME"));
-                        user.setUsername(result.getString("USERNAME"));
-                        user.setSurname(result.getString("LAST_NAME"));
-                        user.setEmail(result.getString("E_MAIL"));
-                        user.setPassword(result.getString("PASSWORD"));
-                        user.setDob(result.getString("DOB"));
-                        user.setSex(result.getString("SEX"));
-                      
+
                     } else {
                     	System.out.println("loda lehsun");
                     }
