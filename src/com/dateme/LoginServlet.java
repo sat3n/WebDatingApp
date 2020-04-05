@@ -9,7 +9,7 @@ package com.dateme;
 	import oracle.jdbc.driver.*;
 	import javax.servlet.ServletException;
 
-	@SuppressWarnings("unused")
+	
 	@WebServlet("/LoginServlet")
 	public class LoginServlet extends HttpServlet {
 	 private static final long serialVersionUID = 1L;
@@ -65,18 +65,18 @@ package com.dateme;
             ResultSet result = statement.executeQuery(query);
             User user=new User();
             if (result.next() == false) {
-              /*user.setFirstname(result.getString("FIRST_NAME"));
-                user.setUsername(result.getString("USERNAME"));
-                user.setSurname(result.getString("LAST_NAME"));
-                user.setEmail(result.getString("E_MAIL"));
-                user.setPassword(result.getString("PASSWORD"));
-                user.setDob(result.getString("DOB"));
-                user.setSex(result.getString("SEX"));
-                System.out.println("Result set is empty! User id does not exist");*/
+              
+                System.out.println("Result set is empty! User id does not exist");
             } else {
                 do {
                     if (result.getString("password").equals(password)) {
-
+                    	user.setFirstname(result.getString("FIRST_NAME"));
+                        user.setUsername(result.getString("USERNAME"));
+                        user.setSurname(result.getString("LAST_NAME"));
+                        user.setEmail(result.getString("E_MAIL"));
+                        user.setPassword(result.getString("PASSWORD"));
+                        user.setDob(result.getString("DOB"));
+                        user.setSex(result.getString("SEX"));
                     } else {
                     	System.out.println("loda lehsun");
                     }
